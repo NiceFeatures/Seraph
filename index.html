@@ -1581,7 +1581,7 @@
         {
           name: "Essência do Vazio",
           description: "Aumenta o dano dos seus projéteis.",
-          rarity: "common",
+          rarity: "comum",
           icon: "catalisador.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentDmg = stats.projectileDamage;
@@ -1594,7 +1594,7 @@
         {
           name: "Essência do Vazio +",
           description: "Aumenta ainda mais o dano dos seus projéteis.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "catalisador2.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentDmg = stats.projectileDamage;
@@ -1607,7 +1607,7 @@
         {
           name: "Vigor Primordial",
           description: "Aumenta seu HP Máximo.",
-          rarity: "common",
+          rarity: "comum",
           icon: "crescimento.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentHp = Math.floor(stats.maxHp);
@@ -1625,7 +1625,7 @@
         {
           name: "Vigor Primordial +",
           description: "Aumenta ainda mais seu HP Máximo.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "crescimento2.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentHp = Math.floor(stats.maxHp);
@@ -1643,7 +1643,7 @@
         {
           name: "Vigor Primordial ++",
           description: "Aumenta drasticamente seu HP Máximo.",
-          rarity: "rare",
+          rarity: "raro",
           icon: "crescimento3.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentHp = Math.floor(stats.maxHp);
@@ -1662,7 +1662,7 @@
           name: "Raio Desintegrador",
           description:
             "Adiciona um raio laser contínuo que causa dano onde você mira, além dos seus ataques normais.",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.laserBeam = true),
           isUnique: true,
@@ -1671,7 +1671,7 @@
           name: "Defletor Arcano",
           description:
             "Projéteis que interceptam disparos inimigos os destroem e absorvem seu poder, aumentando o próprio dano.",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.interceptor = true),
           isUnique: true,
@@ -1685,14 +1685,14 @@
             const nextJumps = currentJumps + 1;
             return `Permite que o projétil salte para inimigos próximos. Saltos atuais: ${currentJumps} <span style="color:#aaa;">-></span> <span style="font-weight:bold; color:lime;">${nextJumps}</span>.`;
           },
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.chainJumps = (e.stats.chainJumps || 0) + 1),
         },
         {
           name: "Eco Temporal",
           description: "Aumenta a Velocidade de Ataque.",
-          rarity: "common",
+          rarity: "comum",
           icon: "ressonancia.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentAS = stats.attackSpeed.toFixed(0);
@@ -1706,7 +1706,7 @@
         {
           name: "Eco Temporal +",
           description: "Aumenta ainda mais a Velocidade de Ataque.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "ressonancia2.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentAS = stats.attackSpeed.toFixed(0);
@@ -1720,7 +1720,7 @@
         {
           name: "Passo Etéreo",
           description: "Aumenta a Velocidade de Movimento.",
-          rarity: "common",
+          rarity: "comum",
           icon: "velocidade.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentSpeedDisplay = (
@@ -1743,7 +1743,7 @@
         {
           name: "Passo Etéreo +",
           description: "Aumenta ainda mais a Velocidade de Movimento.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "velocidade2.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentSpeedDisplay = (
@@ -1771,7 +1771,7 @@
             const next = current + 2;
             return `Inimigos liberam projéteis fracos ao morrer. Atual: ${current} <span style="color:#aaa;">-></span> <span style="font-weight:bold; color:lime;">${next}</span>.`;
           },
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "fragmentacao.png",
           apply: (e) =>
             (e.stats.fragmentation = (e.stats.fragmentation || 0) + 1),
@@ -1780,7 +1780,7 @@
           name: "Estilhaços Entrópicos +",
           description:
             "Ao morrer, inimigos liberam mais 4 projéteis fracos (total +3 desde base).",
-          rarity: "rare",
+          rarity: "raro",
           icon: "fragmentacao2.png",
           apply: (e) => (e.stats.fragmentation += 4),
         },
@@ -1788,7 +1788,7 @@
           name: "Cometa Cinético",
           description:
             "A cada 1000px corridos, lança 1 projétil explosivo para cima",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "friccao.png",
           apply: (e) => (e.stats.frictionProjectiles += 1),
         },
@@ -1796,21 +1796,21 @@
           name: "Cometa Cinético +",
           description:
             "A cada 1000px corridos, lança 3 projéteis explosivos para cima",
-          rarity: "rare",
+          rarity: "raro",
           icon: "friccao2.png",
           apply: (e) => (e.stats.frictionProjectiles += 3),
         },
         {
           name: "Sifão Vital",
           description: "Roubo de Vida: 3% do dano causado",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "sanguessuga.png",
           apply: (e) => (e.stats.lifeSteal += 0.03),
         },
         {
           name: "Sifão Vital +",
           description: "Roubo de Vida: 9% do dano causado",
-          rarity: "rare",
+          rarity: "raro",
           icon: "sanguessuga2.png",
           apply: (e) => (e.stats.lifeSteal += 0.09),
         },
@@ -1822,7 +1822,7 @@
             const nextBolts = currentBolts + 2;
             return `Chama relâmpagos do céu a cada 5s. Relâmpagos atuais: ${currentBolts} <span style="color:#aaa;">-></span> <span style="font-weight:bold; color:lime;">${nextBolts}</span>.`;
           },
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "relampago.png",
           apply: (e) =>
             (e.stats.thunderboltCount = (e.stats.thunderboltCount || 0) + 2),
@@ -1830,14 +1830,14 @@
         {
           name: "Fúria Celestial +",
           description: "Chama 3 relâmpagos do céu a cada 5s",
-          rarity: "rare",
+          rarity: "raro",
           icon: "relampago2.png",
           apply: (e) => (e.stats.thunderboltCount += 3),
         },
         {
           name: "Olho do Predador",
           description: "Aumenta a Chance de Acerto Crítico.",
-          rarity: "common",
+          rarity: "comum",
           icon: "common.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentCrit = (stats.critChance * 100).toFixed(0);
@@ -1851,7 +1851,7 @@
         {
       name: "Salto Gravitacional",
       description: "Aumenta a Altura do seu Pulo.",
-      rarity: "common",
+      rarity: "comum",
       icon: "common.png",
       generatesNextLevelDescription: (stats, currentLevel) => {
         const baseJumpStrength = 15 * 0.6;
@@ -1868,7 +1868,7 @@
         {
           name: "Pulso Restaurador",
           description: "Cura todo o HP.",
-          rarity: "common",
+          rarity: "comum",
           icon: "common.png",
           generatesNextLevelDescription: (
             stats,
@@ -1887,7 +1887,7 @@
         {
           name: "Carapaça de Ébano",
           description: "Aumenta sua Defesa.",
-          rarity: "common",
+          rarity: "comum",
           icon: "common.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentDef = stats.defense;
@@ -1901,7 +1901,7 @@
           name: "Ceifador de Almas",
           description:
             "Aumenta a chance de inimigos droparem orbes de alma (EXP permanente).",
-          rarity: "common",
+          rarity: "comum",
           icon: "common.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentChance = ((stats.soulOrbChance || 0) * 100).toFixed(0);
@@ -1920,14 +1920,14 @@
             const nextPierce = currentPierce + 1;
             return `Projéteis perfuram inimigos. Perfurações atuais: ${currentPierce} <span style="color:#aaa;">-></span> <span style="font-weight:bold; color:lime;">${nextPierce}</span>.`;
           },
-          rarity: "common",
+          rarity: "comum",
           icon: "common.png",
           apply: (e) => e.stats.projectilePierce++,
         },
         {
           name: "Disparo Hiper-sônico",
           description: "Aumenta a Velocidade dos Projéteis.",
-          rarity: "common",
+          rarity: "comum",
           icon: "common.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const baseProjSpeed = 8 * 0.6;
@@ -1947,7 +1947,7 @@
         {
           name: "Singularidade Instável",
           description: "Aumenta o Tamanho dos Projéteis.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const baseSize = 5;
@@ -1968,7 +1968,7 @@
           name: "Manto Espectral",
           description:
             "Aumenta o tempo de invulnerabilidade após ser atingido.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentTime = stats.invulnerabilityTime.toFixed(0);
@@ -1981,7 +1981,7 @@
         {
           name: "Oráculo do Acaso",
           description: "Ganha cargas de Rerolar por subida de nível.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentCharges = stats.rerollCharges;
@@ -1994,7 +1994,7 @@
         {
           name: "Pluma Ascendente",
           description: "Ganha pulos extras.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentExtraJumps = (stats.maxJumps || 1) - 1;
@@ -2007,7 +2007,7 @@
         {
           name: "Dádiva do Destino",
           description: "Aumenta a chance de obter melhorias raras.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentLuck = ((stats.luck || 0) * 100).toFixed(0);
@@ -2020,7 +2020,7 @@
         {
           name: "Bênção de Vida",
           description: "Inimigos têm chance de dropar orbes de cura.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentChance = ((stats.healOrbChance || 0) * 100).toFixed(0);
@@ -2034,7 +2034,7 @@
         {
           name: "Golpe Fatal",
           description: "Aumenta o dano de Acertos Críticos.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentCritDmgBonus = (
@@ -2051,21 +2051,21 @@
           name: "Coração Berserker",
           description:
             "Com menos de 50% de HP, ganha um bônus de dano (até +50%)",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           apply: (e) => (e.stats.rage = !0),
         },
         {
           name: "Simbiose com a Horda",
           description: "Regenera HP com base no nº de inimigos vivos",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           apply: (e) => (e.stats.hpRegenPerEnemy += 0.005),
         },
         {
           name: "Contração Dimensional",
           description: "Fica 10% menor",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           apply: (e) => {
             (e.width *= 0.9), (e.height *= 0.9);
@@ -2074,7 +2074,7 @@
         {
           name: "Fome de Conhecimento",
           description: "Ganha mais EXP de todas as fontes.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentModifierPercent = (
@@ -2094,7 +2094,7 @@
           name: "Feixe Colateral",
           description:
             "Seus acertos têm chance de disparar um feixe laser horizontal que atravessa inimigos.",
-          rarity: "uncommon",
+          rarity: "incomum",
           icon: "uncommon.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentChance = (
@@ -2140,21 +2140,21 @@
         {
           name: "Mente Expandida",
           description: "+1 escolha de melhoria por subida de nível",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => e.stats.upgradeChoices++,
         },
         {
           name: "Égide de Nulidade",
           description: "Cria um escudo que bloqueia 1 golpe a cada 15s",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.barrier = !0),
         },
         {
           name: "Toque Congelante",
           description: "Inimigos ficam 1% mais lentos por acerto (máx 80%)",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.cold = !0),
         },
@@ -2162,14 +2162,14 @@
           name: "Meditação de Batalha",
           description:
             "Ganha velocidade de ataque a cada segundo que fica parado. Acumulável para maior bônus e teto mais alto.",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.focusLevel = (e.stats.focusLevel || 0) + 1),
         },
         {
           name: "Vontade Inquebrável",
           description: "+1 ressurreição (mata todos os inimigos ao reviver)",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => e.stats.revives++,
           isUnique: !0,
@@ -2177,7 +2177,7 @@
         {
           name: "Aura Solar",
           description: "Seu corpo causa dano de contato aos inimigos.",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentDmg = stats.contactDamage || 0;
@@ -2192,7 +2192,7 @@
           name: "Tomo do Potencial",
           description:
             "Melhorias comuns (brancas) que você escolhe se tornam 35% mais eficazes",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.tome = !0),
         },
@@ -2200,7 +2200,7 @@
           name: "Gêmeo Espectral",
           description:
             "Invoca um fogo-fátuo que herda metade do seu dano e velocidade de ataque",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => {
             wisp || ((wisp = new Wisp(e)), (e.stats.hasWisp = !0));
@@ -2210,14 +2210,14 @@
           name: "Hemorragia Cósmica",
           description:
             "Causar dano aos inimigos faz com que eles sangrem com o tempo",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           apply: (e) => (e.stats.wound = !0),
         },
         {
           name: "Precisão Mortal",
           description: "Aumenta drasticamente sua Chance de Acerto Crítico.",
-          rarity: "rare",
+          rarity: "raro",
           icon: "rare.png",
           generatesNextLevelDescription: (stats, currentLevel) => {
             const currentCrit = (stats.critChance * 100).toFixed(0);
