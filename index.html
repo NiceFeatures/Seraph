@@ -1062,6 +1062,26 @@
       <div id="wikiListContainer" class="wiki-list"></div>
       <button id="wikiBackButton" class="btn">Voltar</button>
     </div>
+
+    <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyDqxCzHlqzHkCwFzQombzWtOq5BLrpyWqY",
+      authDomain: "seraph-defesa-final-scores.firebaseapp.com",
+      projectId: "seraph-defesa-final-scores",
+      storageBucket: "seraph-defesa-final-scores.firebasestorage.app",
+      messagingSenderId: "611053880613",
+      appId: "1:611053880613:web:d5d77b9d8ce4e03d13c6cc",
+      measurementId: "G-TFMXQQEMVJ"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    </script>
+    
     <script>
       const d = document,
         canvas = d.getElementById("gameCanvas"),
@@ -4951,16 +4971,15 @@
         return `${e}:${o}`;
       }
       const Leaderboard = {
-        currentDifficulty: "Normal",
-        getLeaderboardKey() {
-          return `voidSurvivorLeaderboard_${this.currentDifficulty}`;
-        },
-        show() {
-          this.loadAndDisplayScores("leaderboard-list");
-          this.loadAndDisplayScores("leaderboard-list-main", true);
-        },
-        loadAndDisplayScores(elementId, isMainLeaderboardScreen = false) {
-          const listElement = d.getElementById(elementId);
+      currentDifficulty: "Normal",
+      getCollectionName() {
+          // O nome da "tabela" no Firestore será "leaderboard_Fácil", "leaderboard_Normal", etc.
+          return `leaderboard_${this.currentDifficulty}`;
+      },
+      
+      // Função para carregar e mostrar os placares
+      async loadAndDisplayScores(elementId, isMainLeaderboardScreen = false) {
+          const listElement = document.getElementById(elementId);
           if (!listElement) return;
 
           if (
@@ -5070,20 +5089,8 @@
           }
         },
         clearScores() {
-          if (
-            confirm(
-              `Limpar placar para dificuldade "${this.currentDifficulty}"?`
-            )
-          ) {
-            try {
-              localStorage.removeItem(this.getLeaderboardKey());
-              this.loadAndDisplayScores("leaderboard-list-main", true);
-              this.loadAndDisplayScores("leaderboard-list");
-            } catch (e) {
-              console.error(e);
-            }
-          }
-        },
+      alert("A limpeza do placar global deve ser feita pelo administrador no painel do Firebase.");
+    },
       };
       let thunderboltTimer = 0;
       const THUNDERBOLT_COOLDOWN = 5e3;
