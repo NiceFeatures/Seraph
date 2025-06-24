@@ -1030,7 +1030,6 @@
       import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
       
       const firebaseConfig = {
-        // SUAS CHAVES DO FIREBASE VÊM AQUI
         apiKey: "AIzaSyDqxCzHlqzHkCwFzQombzWtOq5BLrpyWqY",
         authDomain: "seraph-defesa-final-scores.firebaseapp.com",
         projectId: "seraph-defesa-final-scores",
@@ -1101,114 +1100,116 @@
       // PARTE 3: OBJETO LEADERBOARD MODIFICADO PARA FIREBASE
       // ===============================================================
       const Leaderboard = {
-        currentDifficulty: "Normal",
-        getCollectionName() {
-            return `leaderboard_${this.currentDifficulty}`;
-        },
+    currentDifficulty: "Normal",
+    getCollectionName() {
+        // Converte o nome da dificuldade para um nome seguro para o Firebase
+        // "Fácil" -> "Facil", "Difícil" -> "Dificil"
+        const safeDifficultyName = this.currentDifficulty
+            .replace('á', 'a')
+            .replace('í', 'i');
         
-        async loadAndDisplayScores(elementId, isMainLeaderboardScreen = false) {
-            const listElement = d.getElementById(elementId);
-            if (!listElement) return;
+        return `leaderboard_${safeDifficultyName}`;
+    },
+    
+    async loadAndDisplayScores(elementId, isMainLeaderboardScreen = false) {
+        const listElement = d.getElementById(elementId);
+        if (!listElement) return;
 
-            if (isMainLeaderboardScreen && d.getElementById("leaderboardScreen").contains(listElement)) {
-                let selectorContainer = d.getElementById("difficulty-selector-container");
-                if (!selectorContainer) {
-                    selectorContainer = d.createElement("div");
-                    selectorContainer.id = "difficulty-selector-container";
-                    selectorContainer.style.marginBottom = "15px";
-                    const title = d.createElement("p");
-                    title.innerText = "Ver Placar Para:";
-                    title.style.fontSize = "0.9em";
-                    selectorContainer.appendChild(title);
-
-                    const difficulties = ["Fácil", "Normal", "Difícil"];
-                    difficulties.forEach((diff) => {
-                        const btn = d.createElement("button");
-                        btn.className = "btn"; btn.innerText = diff;
-                        btn.style.fontSize = "0.8em"; btn.style.padding = "8px 12px";
-                        btn.onclick = () => {
-                            soundManager.playUIClickSound();
-                            this.currentDifficulty = diff;
-                            this.loadAndDisplayScores("leaderboard-list-main", true);
-                        };
-                        selectorContainer.appendChild(btn);
-                    });
-                    const leaderboardContainer = listElement.closest(".leaderboard-container");
-                    leaderboardContainer.insertBefore(selectorContainer, leaderboardContainer.firstChild.nextSibling);
-                }
-                Array.from(selectorContainer.getElementsByTagName("button")).forEach((btn) => {
-                    btn.style.borderColor = btn.innerText === this.currentDifficulty ? "#f1c40f" : "#fff";
+        // Lógica para mostrar o seletor de dificuldade (permanece a mesma)
+        if (isMainLeaderboardScreen && d.getElementById("leaderboardScreen").contains(listElement)) {
+            let selectorContainer = d.getElementById("difficulty-selector-container");
+            if (!selectorContainer) {
+                selectorContainer = d.createElement("div");
+                selectorContainer.id = "difficulty-selector-container";
+                selectorContainer.style.marginBottom = "15px";
+                const title = d.createElement("p");
+                title.innerText = "Ver Placar Para:";
+                title.style.fontSize = "0.9em";
+                selectorContainer.appendChild(title);
+                const difficulties = ["Fácil", "Normal", "Difícil"];
+                difficulties.forEach((diff) => {
+                    const btn = d.createElement("button");
+                    btn.className = "btn"; btn.innerText = diff;
+                    btn.style.fontSize = "0.8em"; btn.style.padding = "8px 12px";
+                    btn.onclick = () => {
+                        soundManager.playUIClickSound();
+                        this.currentDifficulty = diff;
+                        this.loadAndDisplayScores("leaderboard-list-main", true);
+                    };
+                    selectorContainer.appendChild(btn);
                 });
+                const leaderboardContainer = listElement.closest(".leaderboard-container");
+                leaderboardContainer.insertBefore(selectorContainer, leaderboardContainer.firstChild.nextSibling);
             }
+            Array.from(selectorContainer.getElementsByTagName("button")).forEach((btn) => {
+                btn.style.borderColor = btn.innerText === this.currentDifficulty ? "#f1c40f" : "#fff";
+            });
+        }
 
-            listElement.innerHTML = "<li>Carregando placar global...</li>";
+        listElement.innerHTML = "<li>Carregando placar global...</li>";
 
-            try {
-                const q = query(collection(db, this.getCollectionName()), orderBy("score", "desc"), limit(10));
-                const querySnapshot = await getDocs(q);
+        try {
+            const q = query(collection(db, this.getCollectionName()), orderBy("score", "desc"), limit(10));
+            const querySnapshot = await getDocs(q);
 
-                if (querySnapshot.empty) {
-                    listElement.innerHTML = "<li>Nenhuma pontuação ainda. Seja o primeiro!</li>";
-                    return;
-                }
-
-                const scores = querySnapshot.docs.map(doc => doc.data());
-                listElement.innerHTML = scores.map(e => `<li><span>${e.name}</span><span>${e.score}${e.time ? ` (${formatTime(e.time)})` : ""}</span></li>`).join("");
-
-            } catch (error) {
-                listElement.innerHTML = "<li>Erro ao carregar o placar. Tente novamente.</li>";
-                console.error("Erro ao buscar placares: ", error);
-            }
-        },
-
-        async submitScore() {
-            const playerNameInput = d.getElementById("playerNameInput");
-            const submissionMessage = d.getElementById("submission-message");
-            const submitScoreBtn = d.getElementById("submitScoreBtn");
-            const name = playerNameInput.value.trim();
-
-            if (!name) {
-                submissionMessage.textContent = "Por favor, insira um nome.";
-                submissionMessage.className = "error";
+            if (querySnapshot.empty) {
+                listElement.innerHTML = "<li>Nenhuma pontuação ainda. Seja o primeiro!</li>";
                 return;
             }
-            submitScoreBtn.disabled = true;
 
-            try {
-                await addDoc(collection(db, this.getCollectionName()), {
-                    name: name,
-                    score: score, // Acessa a variável score global do jogo
-                    time: runTimer, // Acessa a variável runTimer global
-                    createdAt: serverTimestamp()
-                });
+            const scores = querySnapshot.docs.map(doc => doc.data());
+            listElement.innerHTML = scores.map(e => `<li><span>${e.name}</span><span>${e.score}${e.time ? ` (${formatTime(e.time)})` : ""}</span></li>`).join("");
 
-                submissionMessage.textContent = "Pontuação enviada!";
-                submissionMessage.className = "";
-                d.getElementById("score-submission").style.display = "none";
-                this.loadAndDisplayScores("leaderboard-list");
-                this.loadAndDisplayScores("leaderboard-list-main", true);
-
-            } catch (error) {
-                submissionMessage.textContent = "Falha ao enviar pontuação. Tente novamente.";
-                submissionMessage.className = "error";
-                submitScoreBtn.disabled = false;
-                console.error("Erro ao enviar pontuação: ", error);
-            }
-        },
-        
-        show() {
-            this.loadAndDisplayScores('leaderboard-list');
-            this.loadAndDisplayScores('leaderboard-list-main', true);
-        },
-
-        clearScores() {
-            alert("A limpeza do placar global deve ser feita pelo administrador no painel do Firebase.");
+        } catch (error) {
+            listElement.innerHTML = "<li>Erro ao carregar o placar. Tente novamente.</li>";
+            console.error("Erro ao buscar placares: ", error);
         }
-      };
+    },
 
-      // O restante do seu código (classes, funções, etc.) continua aqui...
-      // Omitido para brevidade, mas deve ser exatamente o que você já tem.
-      // ...
+    async submitScore() {
+        const playerNameInput = d.getElementById("playerNameInput");
+        const submissionMessage = d.getElementById("submission-message");
+        const submitScoreBtn = d.getElementById("submitScoreBtn");
+        const name = playerNameInput.value.trim();
+
+        if (!name) {
+            submissionMessage.textContent = "Por favor, insira um nome.";
+            submissionMessage.className = "error";
+            return;
+        }
+        submitScoreBtn.disabled = true;
+
+        try {
+            await addDoc(collection(db, this.getCollectionName()), {
+                name: name,
+                score: score, // Acessa a variável score global do jogo
+                time: runTimer, // Acessa a variável runTimer global
+                createdAt: serverTimestamp()
+            });
+
+            submissionMessage.textContent = "Pontuação enviada!";
+            submissionMessage.className = "";
+            d.getElementById("score-submission").style.display = "none";
+            this.loadAndDisplayScores("leaderboard-list");
+            this.loadAndDisplayScores("leaderboard-list-main", true);
+
+        } catch (error) {
+            submissionMessage.textContent = "Falha ao enviar pontuação. Tente novamente.";
+            submissionMessage.className = "error";
+            submitScoreBtn.disabled = false;
+            console.error("Erro ao enviar pontuação: ", error);
+        }
+    },
+    
+    show() {
+        this.loadAndDisplayScores('leaderboard-list');
+        this.loadAndDisplayScores('leaderboard-list-main', true);
+    },
+
+    clearScores() {
+        alert("A limpeza do placar global deve ser feita pelo administrador no painel do Firebase.");
+    }
+};
       class SoundManager {
         constructor() {
           this.audioContext = null;
@@ -3480,6 +3481,7 @@
             : "rgba(220, 220, 240, 0.8)";
 
           createExplosion(
+            null, // Pass null as 'game' object
             centerX,
             centerY,
             explosionColor,
@@ -3490,6 +3492,7 @@
             0.4
           );
           createExplosion(
+            null,
             centerX,
             centerY,
             "rgba(255, 255, 255, 0.9)",
@@ -3709,6 +3712,7 @@
           player.gainExp(player.expToNextLevel * 1.1);
           player.rerollsLeft++;
           createExplosion(
+            null,
             this.x + this.width / 2,
             this.y + this.height / 2,
             this.color,
@@ -3755,6 +3759,7 @@
             const centerX = this.x + this.width / 2;
             const centerY = this.y + this.height / 2;
             createExplosion(
+              null,
               centerX,
               centerY,
               this.color || "#ff0000",
@@ -3765,6 +3770,7 @@
               0.5
             );
             createExplosion(
+              null,
               centerX,
               centerY,
               "rgba(255, 200, 100, 0.8)",
@@ -3775,6 +3781,7 @@
               0.6
             );
             createExplosion(
+              null,
               centerX,
               centerY,
               "rgba(255, 255, 255, 0.9)",
@@ -4546,7 +4553,7 @@
             let e = "#fff";
             this instanceof PlayerProjectile && (e = "#00ffff"),
               this instanceof EnemyProjectile && (e = "#ff0000"),
-              createExplosion(null, this.x, this.y, e); // Pass null as game object
+              createExplosion(null, this.x, this.y, e);
           }
           this.isOffScreen() && (this.active = !1);
         }
@@ -4784,7 +4791,7 @@
         }
       }
       function createExplosion(
-        game, // 'game' is unused but keeps signature consistent if needed later
+        game,
         e,
         t,
         o = "#fff",
