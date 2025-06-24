@@ -123,36 +123,8 @@
         font-weight: bold;
         text-transform: uppercase;
       }
-      #dev-controls {
-        display: flex;
-        gap: 10px;
-        margin-top: 0;
-      }
       #splashScreen h1 {
         margin-bottom: 50px;
-      }
-      .splash-divider {
-        width: 80%;
-        max-width: 500px;
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 0.2),
-          rgba(255, 255, 255, 0)
-        );
-        margin: 25px 0 15px;
-      }
-      .splash-section-title {
-        font-size: 1em;
-        color: #ccc;
-        margin: 0 0 10px;
-        font-weight: 400;
-      }
-      #dev-controls .btn {
-        font-size: 0.7em;
-        padding: 8px 12px;
       }
       #resetProgressButton {
         border-color: #c0392b;
@@ -474,34 +446,34 @@
         line-height: 1.6;
         font-family: "Courier New", Courier, monospace;
       }
-      .rarity-common {
+      .rarity-comum {
         border-color: #fff;
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
       }
-      .rarity-common .card-rarity {
+      .rarity-comum .card-rarity {
         color: #fff;
       }
-      .rarity-common:hover {
+      .rarity-comum:hover {
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
       }
-      .rarity-uncommon {
+      .rarity-incomum {
         border-color: #3498db;
         box-shadow: 0 0 8px rgba(52, 152, 219, 0.7);
       }
-      .rarity-uncommon .card-rarity {
+      .rarity-incomum .card-rarity {
         color: #3498db;
       }
-      .rarity-uncommon:hover {
+      .rarity-incomum:hover {
         box-shadow: 0 0 20px rgba(52, 152, 219, 1);
       }
-      .rarity-rare {
+      .rarity-raro {
         border-color: #9b59b6;
         box-shadow: 0 0 8px rgba(155, 89, 182, 0.7);
       }
-      .rarity-rare .card-rarity {
+      .rarity-raro .card-rarity {
         color: #9b59b6;
       }
-      .rarity-rare:hover {
+      .rarity-raro:hover {
         box-shadow: 0 0 20px rgba(155, 89, 182, 1);
       }
       #rerollButton {
@@ -624,23 +596,23 @@
         color: #00ffff;
         margin-top: 0;
       }
-      #leaderboard-list {
+      #leaderboard-list, #leaderboard-list-main {
         list-style: none;
         padding: 0;
         max-height: 180px;
         overflow-y: auto;
         text-align: left;
       }
-      #leaderboard-list li {
+      #leaderboard-list li, #leaderboard-list-main li {
         display: flex;
         justify-content: space-between;
         padding: 4px;
         border-bottom: 1px dotted #444;
       }
-      #leaderboard-list li span:last-child {
+      #leaderboard-list li span:last-child, #leaderboard-list-main li span:last-child {
         color: #f1c40f;
       }
-      #leaderboard-list li:last-child {
+      #leaderboard-list li:last-child, #leaderboard-list-main li:last-child {
         border: none;
       }
       #score-submission input {
@@ -680,50 +652,8 @@
         overflow-y: auto;
         text-align: left;
       }
-      #leaderboardScreen li {
-        display: flex;
-        justify-content: space-between;
-        padding: 4px;
-        border-bottom: 1px dotted #444;
-      }
-      #leaderboardScreen li:last-child {
-        border: none;
-      }
-      #leaderboardScreen li span:last-child {
-        color: #f1c40f;
-      }
-      #leaderboardScreen .leaderboard-container {
-        background: rgba(0, 0, 0, 0.85);
-        padding: 20px;
-        width: 90%;
-        max-width: 600px;
-        margin-bottom: 20px;
-      }
-      #leaderboardScreen h3 {
-        color: #00ffff;
-        margin-top: 0;
-      }
-      #leaderboardScreen ul {
-        list-style: none;
-        padding: 0;
-        max-height: 300px;
-        overflow-y: auto;
-        text-align: left;
-      }
-      #leaderboardScreen li {
-        display: flex;
-        justify-content: space-between;
-        padding: 4px;
-        border-bottom: 1px dotted #444;
-      }
-      #leaderboardScreen li:last-child {
-        border: none;
-      }
-      #leaderboardScreen li span:last-child {
-        color: #f1c40f;
-      }
-      #optionsScreen,
-      #debugScreen {
+      
+      #optionsScreen {
         display: none;
       }
       .options-container {
@@ -762,7 +692,7 @@
         align-items: flex-end;
         gap: 5px;
       }
-      inventory-item {
+      .inventory-item {
         font-size: 0.6em;
         background: rgba(0, 0, 0, 0.5);
         padding: 3px 6px;
@@ -872,7 +802,6 @@
         </div>
         <div class="splash-buttons" style="margin-top: 30px">
           <button id="splashOptionsButton" class="btn">Opções</button>
-          <button id="splashDebugButton" class="btn">Debug</button>
         </div>
       </div>
     </div>
@@ -903,23 +832,13 @@
         <button id="parallaxToggle" class="btn">Parallax: LIGADO</button>
         <button id="soundToggle" class="btn">Som: LIGADO</button>
         <button id="inventoryToggle" class="btn">Power Ups: LIGADO</button>
+        <button id="resetProgressButton" class="btn">Resetar Progresso Local</button>
       </div>
       <button id="optionsBackButton" class="btn" style="margin-top: 20px">
         Voltar
       </button>
     </div>
-
-    <div id="debugScreen" class="screen">
-      <h2>Debug</h2>
-      <div class="options-container">
-        <button id="unlockAllHatsButton" class="btn">Liberar Classes</button>
-        <button id="resetProgressButton" class="btn">Resetar Jogo</button>
-      </div>
-      <button id="debugBackButton" class="btn" style="margin-top: 20px">
-        Voltar
-      </button>
-    </div>
-
+    
     <div id="splashHatShopScreen" class="screen">
       <div class="hat-shop-wrapper">
         <h2>
@@ -1062,14 +981,37 @@
       <div id="wikiListContainer" class="wiki-list"></div>
       <button id="wikiBackButton" class="btn">Voltar</button>
     </div>
-    <script>
+
+    <script type="module">
+      // ===============================================================
+      // PARTE 1: INICIALIZAÇÃO DO FIREBASE
+      // ===============================================================
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+      import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
+      
+      const firebaseConfig = {
+        apiKey: "AIzaSyDqxCzHlqzHkCwFzQombzWtOq5BLrpyWqY",
+        authDomain: "seraph-defesa-final-scores.firebaseapp.com",
+        projectId: "seraph-defesa-final-scores",
+        storageBucket: "seraph-defesa-final-scores.appspot.com",
+        messagingSenderId: "611053880613",
+        appId: "1:611053880613:web:d5d77b9d8ce4e03d13c6cc",
+        measurementId: "G-TFMXQQEMVJ"
+      };
+
+      // Inicializa o Firebase e o Firestore
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // ===============================================================
+      // PARTE 2: CÓDIGO PRINCIPAL DO JOGO
+      // ===============================================================
       const d = document,
         canvas = d.getElementById("gameCanvas"),
         ctx = canvas.getContext("2d");
       ctx.imageSmoothingEnabled = !1;
       (canvas.width = window.innerWidth), (canvas.height = window.innerHeight);
       const splashScreen = d.getElementById("splashScreen"),
-        startButton = d.getElementById("startButton"),
         levelUpScreen = d.getElementById("levelUpScreen"),
         upgradeCardsContainer = d.getElementById("upgradeCardsContainer"),
         rerollButton = d.getElementById("rerollButton"),
@@ -1088,12 +1030,9 @@
         pauseLeaderboardButton = d.getElementById("pauseLeaderboardButton"),
         leaderboardBackButton = d.getElementById("leaderboardBackButton"),
         optionsScreen = d.getElementById("optionsScreen"),
-        debugScreen = d.getElementById("debugScreen"),
         splashOptionsButton = d.getElementById("splashOptionsButton"),
-        splashDebugButton = d.getElementById("splashDebugButton"),
         pauseOptionsButton = d.getElementById("pauseOptionsButton"),
         optionsBackButton = d.getElementById("optionsBackButton"),
-        debugBackButton = d.getElementById("debugBackButton"),
         soundToggle = d.getElementById("soundToggle"),
         aimLineToggle = d.getElementById("aimLineToggle"),
         hitboxToggle = d.getElementById("hitboxToggle"),
@@ -1105,15 +1044,128 @@
         wikiBackButton = d.getElementById("wikiBackButton"),
         splashWikiButton = d.getElementById("splashWikiButton"),
         pauseWikiButton = d.getElementById("pauseWikiButton");
-      (goToDifficultyButton = d.getElementById("goToDifficultyButton")),
-        (difficultyScreen = d.getElementById("difficultyScreen")),
-        (difficultyEasy = d.getElementById("difficultyEasy")),
-        (difficultyNormal = d.getElementById("difficultyNormal")),
-        (difficultyHard = d.getElementById("difficultyHard")),
-        (difficultyCustom = d.getElementById("difficultyCustom")),
-        (difficultyBackButton = d.getElementById("difficultyBackButton"));
+      const goToDifficultyButton = d.getElementById("goToDifficultyButton"),
+        difficultyScreen = d.getElementById("difficultyScreen"),
+        difficultyEasy = d.getElementById("difficultyEasy"),
+        difficultyNormal = d.getElementById("difficultyNormal"),
+        difficultyHard = d.getElementById("difficultyHard"),
+        difficultyBackButton = d.getElementById("difficultyBackButton");
       const spriteImages = {};
       let wikiReturnScreen = null;
+
+      // ===============================================================
+      // PARTE 3: OBJETO LEADERBOARD MODIFICADO PARA FIREBASE
+      // ===============================================================
+      const Leaderboard = {
+        currentDifficulty: "Normal",
+        getCollectionName() {
+            // Converte o nome da dificuldade para um nome seguro para o Firebase
+            const safeDifficultyName = this.currentDifficulty
+                .replace('á', 'a')
+                .replace('í', 'i');
+            
+            return `leaderboard_${safeDifficultyName}`;
+        },
+        
+        async loadAndDisplayScores(elementId, isMainLeaderboardScreen = false) {
+            const listElement = d.getElementById(elementId);
+            if (!listElement) return;
+
+            if (isMainLeaderboardScreen && d.getElementById("leaderboardScreen").contains(listElement)) {
+                let selectorContainer = d.getElementById("difficulty-selector-container");
+                if (!selectorContainer) {
+                    selectorContainer = d.createElement("div");
+                    selectorContainer.id = "difficulty-selector-container";
+                    selectorContainer.style.marginBottom = "15px";
+                    const title = d.createElement("p");
+                    title.innerText = "Ver Placar Para:";
+                    title.style.fontSize = "0.9em";
+                    selectorContainer.appendChild(title);
+                    const difficulties = ["Fácil", "Normal", "Difícil"];
+                    difficulties.forEach((diff) => {
+                        const btn = d.createElement("button");
+                        btn.className = "btn"; btn.innerText = diff;
+                        btn.style.fontSize = "0.8em"; btn.style.padding = "8px 12px";
+                        btn.onclick = () => {
+                            soundManager.playUIClickSound();
+                            this.currentDifficulty = diff;
+                            this.loadAndDisplayScores("leaderboard-list-main", true);
+                        };
+                        selectorContainer.appendChild(btn);
+                    });
+                    const leaderboardContainer = listElement.closest(".leaderboard-container");
+                    leaderboardContainer.insertBefore(selectorContainer, leaderboardContainer.firstChild.nextSibling);
+                }
+                Array.from(selectorContainer.getElementsByTagName("button")).forEach((btn) => {
+                    btn.style.borderColor = btn.innerText === this.currentDifficulty ? "#f1c40f" : "#fff";
+                });
+            }
+
+            listElement.innerHTML = "<li>Carregando placar global...</li>";
+
+            try {
+                const q = query(collection(db, this.getCollectionName()), orderBy("score", "desc"), limit(10));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    listElement.innerHTML = "<li>Nenhuma pontuação ainda. Seja o primeiro!</li>";
+                    return;
+                }
+
+                const scores = querySnapshot.docs.map(doc => doc.data());
+                listElement.innerHTML = scores.map(e => `<li><span>${e.name}</span><span>${e.score}${e.time ? ` (${formatTime(e.time)})` : ""}</span></li>`).join("");
+
+            } catch (error) {
+                listElement.innerHTML = "<li>Erro ao carregar o placar. Tente novamente.</li>";
+                console.error("Erro ao buscar placares: ", error);
+            }
+        },
+
+        async submitScore() {
+            const playerNameInput = d.getElementById("playerNameInput");
+            const submissionMessage = d.getElementById("submission-message");
+            const submitScoreBtn = d.getElementById("submitScoreBtn");
+            const name = playerNameInput.value.trim();
+
+            if (!name) {
+                submissionMessage.textContent = "Por favor, insira um nome.";
+                submissionMessage.className = "error";
+                return;
+            }
+            submitScoreBtn.disabled = true;
+
+            try {
+                await addDoc(collection(db, this.getCollectionName()), {
+                    name: name,
+                    score: score, 
+                    time: runTimer, 
+                    createdAt: serverTimestamp()
+                });
+
+                submissionMessage.textContent = "Pontuação enviada!";
+                submissionMessage.className = "";
+                d.getElementById("score-submission").style.display = "none";
+                this.loadAndDisplayScores("leaderboard-list");
+                this.loadAndDisplayScores("leaderboard-list-main", true);
+
+            } catch (error) {
+                submissionMessage.textContent = "Falha ao enviar pontuação. Tente novamente.";
+                submissionMessage.className = "error";
+                submitScoreBtn.disabled = false;
+                console.error("Erro ao enviar pontuação: ", error);
+            }
+        },
+        
+        show() {
+            this.loadAndDisplayScores('leaderboard-list');
+            this.loadAndDisplayScores('leaderboard-list-main', true);
+        },
+
+        clearScores() {
+            alert("A limpeza do placar global deve ser feita pelo administrador no painel do Firebase.");
+        }
+      };
+      
       class SoundManager {
         constructor() {
           this.audioContext = null;
@@ -2795,7 +2847,7 @@
         gainRandomRareUpgrade() {
           const rareUpgrades = allUpgrades.filter(
             (u) =>
-              u.rarity === "rare" && (!u.isUnique || !this.upgrades.has(u.name))
+              u.rarity === "raro" && (!u.isUnique || !this.upgrades.has(u.name))
           );
           if (rareUpgrades.length > 0) {
             const chosenUpgrade =
@@ -2853,25 +2905,7 @@
       let currentWave = 0,
         waveState = "intermission",
         intermissionTimer = 3e3;
-      const WAVE_DEFS = [
-        { wave: 1, enemies: { LacaioDoVazio: 3 } },
-        { wave: 2, enemies: { LacaioDoVazio: 5 } },
-        { wave: 3, enemies: { LacaioDoVazio: 7 } },
-        { wave: 4, enemies: { LacaioDoVazio: 5, SentinelaEspectral: 1 } },
-        { wave: 5, enemies: { LacaioDoVazio: 8, SentinelaEspectral: 2 } },
-        { wave: 6, enemies: { GuardiaoAnomalo: 1, LacaioDoVazio: 4 } },
-        { wave: 7, enemies: { GuardiaoAnomalo: 1, SentinelaEspectral: 2 } },
-        { wave: 8, enemies: { LacaioDoVazio: 10, SentinelaEspectral: 3 } },
-        { wave: 9, enemies: { GuardiaoAnomalo: 2, LacaioDoVazio: 5 } },
-        {
-          wave: 10,
-          enemies: {
-            GuardiaoAnomalo: 1,
-            LacaioDoVazio: 8,
-            SentinelaEspectral: 4,
-          },
-        },
-      ];
+      
       function updateWaveSystem(e) {
         if (gameState !== "playing") return;
 
@@ -3385,6 +3419,7 @@
             : "rgba(220, 220, 240, 0.8)";
 
           createExplosion(
+            null,
             centerX,
             centerY,
             explosionColor,
@@ -3395,6 +3430,7 @@
             0.4
           );
           createExplosion(
+            null,
             centerX,
             centerY,
             "rgba(255, 255, 255, 0.9)",
@@ -3614,6 +3650,7 @@
           player.gainExp(player.expToNextLevel * 1.1);
           player.rerollsLeft++;
           createExplosion(
+            null,
             this.x + this.width / 2,
             this.y + this.height / 2,
             this.color,
@@ -3660,6 +3697,7 @@
             const centerX = this.x + this.width / 2;
             const centerY = this.y + this.height / 2;
             createExplosion(
+              null,
               centerX,
               centerY,
               this.color || "#ff0000",
@@ -3670,6 +3708,7 @@
               0.5
             );
             createExplosion(
+              null,
               centerX,
               centerY,
               "rgba(255, 200, 100, 0.8)",
@@ -3680,6 +3719,7 @@
               0.6
             );
             createExplosion(
+              null,
               centerX,
               centerY,
               "rgba(255, 255, 255, 0.9)",
@@ -3720,7 +3760,7 @@
 
             setTimeout(() => {
               currentStarfieldConfig++;
-              Starfield.init();
+              Starfield.init(starfieldConfigs[currentStarfieldConfig % starfieldConfigs.length]);
 
               const groundColors = ["#2a1a3a", "#3a2a1a", "#1a3a2a", "#3a3a1a"];
               const groundStrokeColors = [
@@ -4451,7 +4491,7 @@
             let e = "#fff";
             this instanceof PlayerProjectile && (e = "#00ffff"),
               this instanceof EnemyProjectile && (e = "#ff0000"),
-              createExplosion(this.x, this.y, e);
+              createExplosion(null, this.x, this.y, e); 
           }
           this.isOffScreen() && (this.active = !1);
         }
@@ -4689,6 +4729,7 @@
         }
       }
       function createExplosion(
+        game,
         e,
         t,
         o = "#fff",
@@ -4950,141 +4991,7 @@
             .padStart(2, "0");
         return `${e}:${o}`;
       }
-      const Leaderboard = {
-        currentDifficulty: "Normal",
-        getLeaderboardKey() {
-          return `voidSurvivorLeaderboard_${this.currentDifficulty}`;
-        },
-        show() {
-          this.loadAndDisplayScores("leaderboard-list");
-          this.loadAndDisplayScores("leaderboard-list-main", true);
-        },
-        loadAndDisplayScores(elementId, isMainLeaderboardScreen = false) {
-          const listElement = d.getElementById(elementId);
-          if (!listElement) return;
-
-          if (
-            isMainLeaderboardScreen &&
-            d.getElementById("leaderboardScreen").contains(listElement)
-          ) {
-            let selectorContainer = d.getElementById(
-              "difficulty-selector-container"
-            );
-            if (!selectorContainer) {
-              selectorContainer = d.createElement("div");
-              selectorContainer.id = "difficulty-selector-container";
-              selectorContainer.style.marginBottom = "15px";
-              const title = d.createElement("p");
-              title.innerText = "Ver Placar Para:";
-              title.style.fontSize = "0.9em";
-              selectorContainer.appendChild(title);
-
-              const difficulties = ["Fácil", "Normal", "Difícil"];
-              difficulties.forEach((diff) => {
-                const btn = d.createElement("button");
-                btn.className = "btn";
-                btn.innerText = diff;
-                btn.style.fontSize = "0.8em";
-                btn.style.padding = "8px 12px";
-                btn.onclick = () => {
-                  soundManager.playUIClickSound();
-                  this.currentDifficulty = diff;
-                  this.loadAndDisplayScores("leaderboard-list-main", true);
-                };
-                if (diff === this.currentDifficulty) {
-                  btn.style.borderColor = "#f1c40f";
-                }
-                selectorContainer.appendChild(btn);
-              });
-              const leaderboardContainer = listElement.closest(
-                ".leaderboard-container"
-              );
-              if (leaderboardContainer) {
-                leaderboardContainer.insertBefore(
-                  selectorContainer,
-                  leaderboardContainer.firstChild.nextSibling
-                );
-              } else {
-                listElement.parentNode.insertBefore(
-                  selectorContainer,
-                  listElement
-                );
-              }
-            }
-            Array.from(
-              selectorContainer.getElementsByTagName("button")
-            ).forEach((btn) => {
-              btn.style.borderColor =
-                btn.innerText === this.currentDifficulty ? "#f1c40f" : "#fff";
-            });
-          }
-
-          try {
-            const key = this.getLeaderboardKey();
-            const scoresData = localStorage.getItem(key);
-            const scores = scoresData ? JSON.parse(scoresData) : [];
-            listElement.innerHTML =
-              0 === scores.length
-                ? "<li>Nenhuma pontuação ainda. Seja o primeiro!</li>"
-                : scores
-                    .map(
-                      (e) =>
-                        `<li><span>${e.name}</span><span>${e.score}${
-                          e.time ? ` (${formatTime(e.time)})` : ""
-                        }</span></li>`
-                    )
-                    .join("");
-          } catch (o) {
-            listElement.innerHTML = "<li>Erro ao carregar pontuações.</li>";
-            console.error(o);
-          }
-        },
-        submitScore() {
-          const e = d.getElementById("playerNameInput"),
-            t = d.getElementById("submission-message"),
-            o = e.value.trim();
-          if (!o)
-            return (
-              (t.textContent = "Por favor, insira um nome."),
-              void (t.className = "error")
-            );
-          d.getElementById("submitScoreBtn").disabled = !0;
-          try {
-            const key = this.getLeaderboardKey();
-            const scoresData = localStorage.getItem(key);
-            let s = scoresData ? JSON.parse(scoresData) : [];
-            s.push({ name: o, score: score, time: runTimer }),
-              s.sort((e, t) => t.score - e.score),
-              s.length > 10 && (s = s.slice(0, 10)),
-              localStorage.setItem(key, JSON.stringify(s)),
-              (t.textContent = "Pontuação enviada!"),
-              (t.className = ""),
-              (d.getElementById("score-submission").style.display = "none"),
-              this.loadAndDisplayScores("leaderboard-list");
-            this.loadAndDisplayScores("leaderboard-list-main", true);
-          } catch (i) {
-            (t.textContent = "Falha ao enviar pontuação."),
-              (t.className = "error"),
-              (d.getElementById("submitScoreBtn").disabled = !1),
-              console.error(i);
-          }
-        },
-        clearScores() {
-          if (
-            confirm(
-              `Limpar placar para dificuldade "${this.currentDifficulty}"?`
-            )
-          ) {
-            try {
-              localStorage.removeItem(this.getLeaderboardKey());
-              this.loadAndDisplayScores("leaderboard-list-main", true);
-              this.loadAndDisplayScores("leaderboard-list");
-            } catch (e) {
-              console.error(e);
-            }
-          }
-        },
-      };
+      
       let thunderboltTimer = 0;
       const THUNDERBOLT_COOLDOWN = 5e3;
       function handleThunderbolts(e) {
@@ -5104,7 +5011,7 @@
 
             lightningBolts.push(new LightningBolt(o, groundY));
 
-            createExplosion(o, groundY, "#00ffff", 30);
+            createExplosion(null, o, groundY, "#00ffff", 30);
 
             enemies.forEach((e) => {
               Math.abs(e.x + e.width / 2 - o) < 25 && e.takeDamage(i, !0);
@@ -5158,7 +5065,7 @@
         const e = Math.random(),
           t = 0.1 + 0.5 * player.stats.luck,
           o = 0.3 + player.stats.luck;
-        return e < t ? "rare" : e < t + o ? "uncommon" : "common";
+        return e < t ? "raro" : e < t + o ? "incomum" : "comum";
       }
       function triggerLevelUp() {
         const l = d.getElementById("levelUpFlash");
@@ -5200,9 +5107,9 @@
           if (!u) return;
           const cardDiv = d.createElement("div");
           const raritiesText = {
-            common: "comum",
-            uncommon: "incomum",
-            rare: "raro",
+            comum: "comum",
+            incomum: "incomum",
+            raro: "raro",
           };
           const iconHTML =
             u.icon && spriteImages[u.icon]
@@ -5236,13 +5143,14 @@
               player
             );
           }
-
-          cardDiv.className = `upgrade-card rarity-${u.rarity}`;
+          
+          const rarityClass = u.rarity.replace('ç', 'c').replace('á', 'a');
+          cardDiv.className = `upgrade-card rarity-${rarityClass}`;
           cardDiv.innerHTML = `
                 ${iconHTML}
                 <div class="card-header">
                     <h3>${cardTitle}</h3>
-                    <div class="card-rarity">${raritiesText[u.rarity]}</div>
+                    <div class="card-rarity">${raritiesText[u.rarity] || u.rarity}</div>
                 </div>
                 <div class="card-divider"></div>
                 <p class="card-description">${descriptionText}</p>`;
@@ -5256,7 +5164,7 @@
       }
       function selectUpgrade(e) {
         soundManager.playUIClickSound(),
-          player.stats.tome && "common" === e.rarity
+          player.stats.tome && "comum" === e.rarity
             ? e.apply(player)
             : e.apply(player),
           e.isUnique &&
@@ -5370,11 +5278,10 @@
               item.forEach((i) => i.draw())
             );
             wisp && wisp.draw();
-            player.draw();
+            if (player) player.draw();
             dNums.forEach((dn) => dn.draw());
           }
           updateInventoryVisibility();
-          const t = Math.min(50, e - lastTime);
           return;
         }
         const t = Math.min(50, e - lastTime);
@@ -5486,7 +5393,7 @@
 
         generateGround(),
           generatePlatforms(),
-          Starfield.init(),
+          Starfield.init(starfieldConfigs[currentStarfieldConfig % starfieldConfigs.length]);
           (player = new Player()),
           (player.isLevelingUp = false),
           updateInventoryUI(),
@@ -5571,14 +5478,13 @@
       }
       function loadAssets(e) {
         const t = new Set();
-        allUpgrades.forEach((e) => {
-          e.icon
-            ? t.add(e.icon)
-            : "common" === e.rarity
-            ? t.add("common.png")
-            : "uncommon" === e.rarity
-            ? t.add("uncommon.png")
-            : t.add("rare.png");
+        allUpgrades.forEach((item) => {
+          if (item.icon) {
+            t.add(item.icon);
+          } else {
+            const rarityIcon = { comum: 'common.png', incomum: 'uncommon.png', raro: 'rare.png' };
+            t.add(rarityIcon[item.rarity]);
+          }
         }),
           t.add("hat_bruxo.png"),
           t.add("hat_guerreiro.png"),
@@ -5626,16 +5532,22 @@
         });
       }
       const switchScreen = (e, t, o) => {
-        e && (e.style.display = "none"),
-          t && (d.getElementById(t).style.display = "flex"),
-          o && (gameState = o);
+        if(e) {
+          if (typeof e === 'string') d.getElementById(e).style.display = 'none';
+          else e.style.display = 'none';
+        }
+        if(t) {
+          if(typeof t === 'string') d.getElementById(t).style.display = 'flex';
+          else t.style.display = 'flex';
+        }
+        if (o) gameState = o;
       };
       function populateWiki(filter = "") {
         const container = d.getElementById("wikiListContainer");
         container.innerHTML = "";
-        const rarityOrder = { common: 1, uncommon: 2, rare: 3 };
+        const rarityOrder = { comum: 1, incomum: 2, raro: 3 };
         const sortedUpgrades = [...allUpgrades].sort(
-          (a, b) => rarityOrder[a.rarity] - rarityOrder[b.rarity]
+          (a, b) => (rarityOrder[a.rarity] || 0) - (rarityOrder[b.rarity] || 0)
         );
 
         const lowerCaseFilter = filter.toLowerCase();
@@ -5653,12 +5565,10 @@
             const icon = u.icon
               ? `<img src="img/${u.icon}" style="width: 24px; height: 24px; image-rendering: pixelated;">`
               : "";
+            const rarityColor = { comum: "#fff", incomum: "#3498db", raro: "#9b59b6" }[u.rarity] || '#fff';
+            const rarityClass = u.rarity.replace('ç', 'c').replace('á', 'a');
             itemDiv.innerHTML = `
-              <h3>${icon} ${u.name} <span class="rarity rarity-${
-              u.rarity
-            }" style="color: ${
-              { common: "#fff", uncommon: "#3498db", rare: "#9b59b6" }[u.rarity]
-            }">${u.rarity}</span></h3>
+              <h3>${icon} ${u.name} <span class="rarity rarity-${rarityClass}" style="color: ${rarityColor}">${u.rarity}</span></h3>
               <p>${u.description}</p>
             `;
             container.appendChild(itemDiv);
@@ -5714,7 +5624,7 @@
           if ("u" === e.key || "U" === e.key) {
             t.style.display = "none" === t.style.display ? "block" : "none";
           } else if (gameState === "playing") {
-            if (" " === e.key || "Space" === e.code) {
+            if (" " === e.key || e.code === "Space") {
               e.preventDefault(), player.jump();
             } else if ("r" === e.key || "R" === e.key) {
               (autoFire = !autoFire), updateAutofireIndicator();
@@ -5741,11 +5651,11 @@
           splashHatShopButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
               HAT_SHOP.init("splashHatShopContainer", "splashSoulCount"),
-              switchScreen(splashScreen, "splashHatShopScreen");
+              switchScreen("splashScreen", "splashHatShopScreen");
           }),
           splashHatShopBackButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
-              switchScreen(splashHatShopScreen, "splashScreen");
+              switchScreen("splashHatShopScreen", "splashScreen");
           }),
           soundToggle.addEventListener("click", () =>
             toggleAndSave("soundEnabled", updateAllToggleButtons)
@@ -5771,53 +5681,47 @@
           splashOptionsButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
               (optionsReturnScreen = "splashScreen"),
-              switchScreen(splashScreen, "optionsScreen");
-          }),
-          splashDebugButton.addEventListener("click", () => {
-            soundManager.playUIClickSound(),
-              switchScreen(splashScreen, "debugScreen");
+              switchScreen("splashScreen", "optionsScreen");
           }),
           pauseOptionsButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
               (optionsReturnScreen = "pauseScreen"),
-              switchScreen(pauseScreen, "optionsScreen");
+              switchScreen("pauseScreen", "optionsScreen");
           }),
           optionsBackButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
-              switchScreen(optionsScreen, optionsReturnScreen);
+              switchScreen("optionsScreen", optionsReturnScreen);
           }),
-          debugBackButton.addEventListener("click", () => {
-            soundManager.playUIClickSound(),
-              switchScreen(debugScreen, "splashScreen");
-          }),
+          d.getElementById("resetProgressButton").addEventListener("click", resetProgress),
+
           d
             .getElementById("submitScoreBtn")
             .addEventListener("click", () => Leaderboard.submitScore()),
           d.getElementById("backToMenuButton").addEventListener("click", () => {
             soundManager.playUIClickSound(),
-              switchScreen(gameOverScreen, "splashScreen", "splash");
+              switchScreen("gameOverScreen", "splashScreen", "splash");
           }),
           d
             .getElementById("pauseBackToMenuButton")
             .addEventListener("click", () => {
               soundManager.playUIClickSound(),
-                switchScreen(pauseScreen, "splashScreen", "splash");
+                switchScreen("pauseScreen", "splashScreen", "splash");
             }),
           splashLeaderboardButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
               (leaderboardReturnScreen = "splashScreen"),
-              switchScreen(splashScreen, "leaderboardScreen"),
-              Leaderboard.loadAndDisplayScores("leaderboard-list-main");
+              switchScreen("splashScreen", "leaderboardScreen"),
+              Leaderboard.loadAndDisplayScores("leaderboard-list-main", true);
           }),
           pauseLeaderboardButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
               (leaderboardReturnScreen = "pauseScreen"),
-              switchScreen(pauseScreen, "leaderboardScreen"),
-              Leaderboard.loadAndDisplayScores("leaderboard-list-main");
+              switchScreen("pauseScreen", "leaderboardScreen"),
+              Leaderboard.loadAndDisplayScores("leaderboard-list-main", true);
           }),
           leaderboardBackButton.addEventListener("click", () => {
             soundManager.playUIClickSound(),
-              switchScreen(leaderboardScreen, leaderboardReturnScreen);
+              switchScreen("leaderboardScreen", leaderboardReturnScreen);
           }),
           d
             .getElementById("clearLeaderboardButton")
@@ -5882,18 +5786,18 @@
         splashWikiButton.addEventListener("click", () => {
           soundManager.playUIClickSound();
           wikiReturnScreen = "splashScreen";
-          switchScreen(splashScreen, "wikiScreen");
+          switchScreen("splashScreen", "wikiScreen");
         });
 
         pauseWikiButton.addEventListener("click", () => {
           soundManager.playUIClickSound();
           wikiReturnScreen = "pauseScreen";
-          switchScreen(pauseScreen, "wikiScreen");
+          switchScreen("pauseScreen", "wikiScreen");
         });
 
         wikiBackButton.addEventListener("click", () => {
           soundManager.playUIClickSound();
-          switchScreen(wikiScreen, wikiReturnScreen);
+          switchScreen("wikiScreen", wikiReturnScreen);
         });
 
         d.getElementById("wikiSearchBox").addEventListener("input", (e) => {
@@ -5902,12 +5806,12 @@
 
         goToDifficultyButton.addEventListener("click", () => {
           soundManager.playUIClickSound();
-          switchScreen(splashScreen, "difficultyScreen");
+          switchScreen("splashScreen", "difficultyScreen");
         });
 
         difficultyBackButton.addEventListener("click", () => {
           soundManager.playUIClickSound();
-          switchScreen(difficultyScreen, "splashScreen");
+          switchScreen("difficultyScreen", "splashScreen");
         });
 
         function setDifficultyAndStart(
@@ -5919,7 +5823,7 @@
           difficultySettings.threatMultiplier = threatMult;
           difficultySettings.enemyScalingMultiplier = enemyScaleMult;
           soundManager.init();
-          switchScreen(difficultyScreen, null, "playing");
+          switchScreen("difficultyScreen", null, "playing");
           startGameSequence();
           Leaderboard.currentDifficulty = selectedDifficultyName;
           Leaderboard.show();
@@ -5948,20 +5852,13 @@
         d.getElementById("victoryScreen").style.display = "flex";
       }
       function resetProgress() {
-        confirm(
-          "Deseja mesmo resetar todo o progresso? Isso é irreversível."
-        ) &&
-          (soundManager.playUIClickSound(),
-          localStorage.removeItem("voidSurvivorData"),
-          localStorage.removeItem("voidSurvivorLeaderboard"),
-          location.reload());
+        if(confirm("Deseja mesmo resetar todo o progresso LOCAL (classes, etc)? O placar online não será afetado.")){
+          soundManager.playUIClickSound();
+          localStorage.removeItem("voidSurvivorData");
+          location.reload();
+        }
       }
-      function unlockAllHats() {
-        soundManager.playUIClickSound(),
-          (gameData.unlockedHats = Object.keys(HATS)),
-          saveGameData(),
-          alert("Todas as classes foram liberadas!");
-      }
+      
       function updateAutofireIndicator() {
         const e = d.getElementById("autofire-indicator");
         if (e) {
@@ -5998,15 +5895,7 @@
         loadGameData(),
           updateAllToggleButtons(),
           populateWiki(),
-          loadAssets(() => {
-            d.getElementById("resetProgressButton");
-            d
-              .getElementById("resetProgressButton")
-              .addEventListener("click", resetProgress),
-              d
-                .getElementById("unlockAllHatsButton")
-                .addEventListener("click", unlockAllHats);
-          }),
+          loadAssets(() => {}),
           setupEventListeners();
       }
       init();
