@@ -987,21 +987,29 @@
       // PARTE 1: INICIALIZAÇÃO DO FIREBASE
       // ===============================================================
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
-      
-      const firebaseConfig = {
-        apiKey: "AIzaSyDqxCzHlqzHkCwFzQombzWtOq5BLrpyWqY",
-        authDomain: "seraph-defesa-final-scores.firebaseapp.com",
-        projectId: "seraph-defesa-final-scores",
-        storageBucket: "seraph-defesa-final-scores.appspot.com",
-        messagingSenderId: "611053880613",
-        appId: "1:611053880613:web:d5d77b9d8ce4e03d13c6cc",
-        measurementId: "G-TFMXQQEMVJ"
-      };
+	import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
+	import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app-check.js";
 
-      // Inicializa o Firebase e o Firestore
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
+	const firebaseConfig = {
+	  apiKey: "AIzaSyDqxCzHlqzHkCwFzQombzWtOq5BLrpyWqY",
+	  authDomain: "seraph-defesa-final-scores.firebaseapp.com",
+	  projectId: "seraph-defesa-final-scores",
+	  storageBucket: "seraph-defesa-final-scores.appspot.com",
+	  messagingSenderId: "611053880613",
+	  appId: "1:611053880613:web:d5d77b9d8ce4e03d13c6cc",
+	  measurementId: "G-TFMXQQEMVJ"
+	};
+
+	// Inicializa o Firebase App
+	const app = initializeApp(firebaseConfig);
+
+	// Inicializa o banco de dados Firestore
+	const db = getFirestore(app);
+	
+	const appCheck = initializeAppCheck(app, {
+	  provider: new ReCaptchaV3Provider('6LfuX2srAAAAACcBPADA-3vSL36TQFTAN9RhsZ2g'),
+	  isTokenAutoRefreshEnabled: true
+	});
 
       // ===============================================================
       // PARTE 2: CÓDIGO PRINCIPAL DO JOGO
